@@ -1,0 +1,8 @@
+{
+  "domain": "brematic",
+  "name": "Brematic",
+  "documentation": "https://github.com/tefinger/hass-brematic",
+  "dependencies": [],
+  "codeowners": ["@tefinger"],
+  "requirements": ["pyBrematic==1.0.0"]
+}
