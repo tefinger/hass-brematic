@@ -22,14 +22,14 @@ Custom component for Home Assistant to support Brematic devices.
 (*) Tested devices
 
 # Installation
-There are two ways for installing this custom component. Manually or by using [custom_updater](https://www.home-assistant.io/components/light.switch/).
+There are two ways for installing this custom component. Manually or by using [custom_updater](https://github.com/custom-components/custom_updater).
 
 ## Manual installation
 - Download this repository to your machine
 - Copy the folder `brematic` to `<config>/custom_components/`
 
 ## Custom updater
-- Make sure you have [custom_updater](https://www.home-assistant.io/components/light.switch/) installed and running
+- Make sure you have [custom_updater](https://github.com/custom-components/custom_updater) installed and running
 - Add the url for the brematic component to your custom_updater configuration like this:
 ```yaml
 custom_updater:
