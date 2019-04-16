@@ -1,0 +1,13 @@
+{
+    "brematic": {
+        "version": "0.0.1",
+        "local_location": "/custom_components/brematic/__init__.py",
+        "remote_location": "https://raw.githubusercontent.com/tefinger/hass-brematic/master/brematic/__init__.py",
+        "visit_repo": "https://github.com/tefinger/hass-brematic",
+        "changelog": "https://github.com/tefinger/hass-brematic",
+        "resources": [
+            "https://raw.githubusercontent.com/tefinger/hass-brematic/master/brematic/manifest.json",
+            "https://raw.githubusercontent.com/tefinger/hass-brematic/master/brematic/switch.py"
+        ]
+    }
+}
