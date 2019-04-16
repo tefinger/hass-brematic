@@ -66,3 +66,34 @@ switch:
     - **unit_code**<br />&nbsp;&nbsp;*(string) (Required)* Unit code of the device
     - **unit_type**<br />&nbsp;&nbsp;*(string) (Optional)* Type of the unit (`RCS1000N`, `RCR1000N`, `AB440SA`, `CMR1000`, `PAR1500`) <br />&nbsp;&nbsp; default: `RCS1000N`
     - **friendly_name**<br />&nbsp;&nbsp;*(string) (Optional)* Friendly name of the device
+
+# Authors & contributors
+The original setup of this repository is by [Tobias Efinger](https://github.com/tefinger).
+
+For a full list of all authors and contributors, check the [contributor's page](https://github.com/tefinger/hass-brematic/graphs/contributors).
+
+# Credits
+Thanks to [d-Rickyy-b](https://github.com/d-Rickyy-b) for the awesome [pyBrematic](https://github.com/d-Rickyy-b/pyBrematic) package which is used in this component.
+
+# License
+MIT License
+
+Copyright (c) 2019 Tobias Efinger
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
