@@ -1,3 +1,3 @@
 """Brematic integration for Home Assistant"""
 
-from .const import VERSION
+VERSION = "0.1.0"

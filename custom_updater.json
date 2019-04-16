@@ -7,7 +7,8 @@
         "changelog": "https://github.com/tefinger/hass-brematic",
         "resources": [
             "https://raw.githubusercontent.com/tefinger/hass-brematic/master/brematic/manifest.json",
-            "https://raw.githubusercontent.com/tefinger/hass-brematic/master/brematic/switch.py"
+            "https://raw.githubusercontent.com/tefinger/hass-brematic/master/brematic/switch.py",
+            "https://raw.githubusercontent.com/tefinger/hass-brematic/master/brematic/const.py"
         ]
     }
 }
