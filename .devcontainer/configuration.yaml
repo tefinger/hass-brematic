@@ -1,0 +1,19 @@
+default_config:
+
+switch:
+    - platform: brematic
+      host: '10.0.3.2'
+      system_code: '01010'
+      gateway_type: 'Brennenstuhl'
+      switches:
+        power_outlet:
+          unit_code: '00010'
+          friendly_name: Power Outlet
+        floor_lamp:
+          unit_code: '11111'
+          unit_type: 'RCS1000N'
+
+logger:
+    default: error
+    logs:
+        custom_components.brematic: debug
