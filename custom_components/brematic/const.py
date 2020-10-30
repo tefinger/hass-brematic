@@ -1,6 +1,6 @@
 """Brematic integration for Home Assistant"""
 
-VERSION = "0.1.0"
+VERSION = "0.2.1"
 
 CONF_SYSTEM_CODE = "system_code"
 CONF_GATEWAY_TYPE = "gateway_type"
