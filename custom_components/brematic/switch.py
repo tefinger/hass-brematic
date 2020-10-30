@@ -12,34 +12,27 @@ from homeassistant.const import CONF_FRIENDLY_NAME, CONF_HOST, CONF_SWITCHES, ST
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.restore_state import RestoreEntity
 
-from .const import VERSION
+from .const import (
+    VERSION,
+    CONF_SYSTEM_CODE,
+    CONF_GATEWAY_TYPE,
+    CONF_UNIT_CODE,
+    CONF_UNIT_TYPE,
+    GATEWAY_TYPE_BRENNENSTUHL,
+    GATEWAY_TYPE_INTERTECHNO,
+    GATEWAY_TYPES,
+    UNIT_TYPE_RCS1000N,
+    UNIT_TYPE_RCR1000N,
+    UNIT_TYPE_AB440SA,
+    UNIT_TYPE_CMR1000,
+    UNIT_TYPE_PAR1500,
+    UNIT_TYPES,
+    DEFAULT_UNIT_TYPE,
+    DEFAULT_GATEWAY_TYPE,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
-CONF_SYSTEM_CODE = "system_code"
-CONF_GATEWAY_TYPE = "gateway_type"
-CONF_UNIT_CODE = "unit_code"
-CONF_UNIT_TYPE = "unit_type"
-
-GATEWAY_TYPE_BRENNENSTUHL = "Brennenstuhl"
-GATEWAY_TYPE_INTERTECHNO = "Intertechno"
-GATEWAY_TYPES = [GATEWAY_TYPE_BRENNENSTUHL, GATEWAY_TYPE_INTERTECHNO]
-
-UNIT_TYPE_RCS1000N = "RCS1000N"
-UNIT_TYPE_RCR1000N = "RCR1000N"
-UNIT_TYPE_AB440SA = "AB440SA"
-UNIT_TYPE_CMR1000 = "CMR1000"
-UNIT_TYPE_PAR1500 = "PAR1500"
-UNIT_TYPES = [
-    UNIT_TYPE_RCS1000N,  # Brennenstuhl
-    UNIT_TYPE_RCR1000N,  # Brennenstuhl
-    UNIT_TYPE_AB440SA,  # Elro
-    UNIT_TYPE_CMR1000,  # Intertechno
-    UNIT_TYPE_PAR1500,  # Intertechno
-]
-
-DEFAULT_UNIT_TYPE = UNIT_TYPE_RCS1000N
-DEFAULT_GATEWAY_TYPE = GATEWAY_TYPE_BRENNENSTUHL
 
 # Validation of the user's configuration
 UNIT_SCHEMA = vol.Schema(
