@@ -82,7 +82,7 @@ Thanks to [d-Rickyy-b](https://github.com/d-Rickyy-b) for the awesome [pyBremati
 # License
 MIT License
 
-Copyright (c) 2019 Tobias Efinger
+Copyright (c) 2021 Tobias Efinger
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
