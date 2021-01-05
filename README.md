@@ -16,7 +16,11 @@ Custom component for Home Assistant to support Brematic devices.
 - Brennenstuhl RCS1000N (*)
 - Brennenstuhl RCR1000N
 - Elro AB440SA
+- Intertechno CMR300
+- Intertechno CMR500
 - Intertechno CMR1000
+- Intertechno ITR300
+- Intertechno ITR3500
 - Intertechno PAR1500
 
 (*) Tested devices
@@ -64,7 +68,7 @@ switch:
 - **switches**<br />&nbsp;&nbsp;*(map) (Required)* The array that contains all switches
   - **identifier**<br />&nbsp;&nbsp;*(map) (Required)* Name of the command switch as slug. Multiple entries are possible.
     - **unit_code**<br />&nbsp;&nbsp;*(string) (Required)* Unit code of the device
-    - **unit_type**<br />&nbsp;&nbsp;*(string) (Optional)* Type of the unit (`RCS1000N`, `RCR1000N`, `AB440SA`, `CMR1000`, `PAR1500`) <br />&nbsp;&nbsp; default: `RCS1000N`
+    - **unit_type**<br />&nbsp;&nbsp;*(string) (Optional)* Type of the unit (`RCS1000N`, `RCR1000N`, `AB440SA`, `CMR300`, `CMR500`, `CMR1000`, `ITR300`, `ITR3500`, `PAR1500`) <br />&nbsp;&nbsp; default: `RCS1000N`
     - **friendly_name**<br />&nbsp;&nbsp;*(string) (Optional)* Friendly name of the device
 
 # Authors & contributors

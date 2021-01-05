@@ -10,7 +10,11 @@ Custom component for Home Assistant to support Brematic devices.
 - Brennenstuhl RCS1000N (*)
 - Brennenstuhl RCR1000N
 - Elro AB440SA
+- Intertechno CMR300
+- Intertechno CMR500
 - Intertechno CMR1000
+- Intertechno ITR300
+- Intertechno ITR3500
 - Intertechno PAR1500
 
 (*) Tested devices
