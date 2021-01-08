@@ -24,7 +24,11 @@ from .const import (
     UNIT_TYPE_RCS1000N,
     UNIT_TYPE_RCR1000N,
     UNIT_TYPE_AB440SA,
+    UNIT_TYPE_CMR300,
+    UNIT_TYPE_CMR500,
     UNIT_TYPE_CMR1000,
+    UNIT_TYPE_ITR300,
+    UNIT_TYPE_ITR3500,
     UNIT_TYPE_PAR1500,
     UNIT_TYPES,
     DEFAULT_UNIT_TYPE,
@@ -84,10 +88,26 @@ def get_unit(system_code, unit_conf):
         from pyBrematic.devices.elro import AB440SA
 
         return AB440SA(system_code, unit_code)
+    elif unit_type == UNIT_TYPE_CMR300:
+        from pyBrematic.devices.intertechno import CMR300
+
+        return CMR300(system_code, unit_code)
+    elif unit_type == UNIT_TYPE_CMR500:
+        from pyBrematic.devices.intertechno import CMR500
+
+        return CMR500(system_code, unit_code)
     elif unit_type == UNIT_TYPE_CMR1000:
         from pyBrematic.devices.intertechno import CMR1000
 
         return CMR1000(system_code, unit_code)
+    elif unit_type == UNIT_TYPE_ITR300:
+        from pyBrematic.devices.intertechno import ITR300
+
+        return ITR300(system_code, unit_code)
+    elif unit_type == UNIT_TYPE_ITR3500:
+        from pyBrematic.devices.intertechno import ITR3500
+
+        return ITR3500(system_code, unit_code)
     elif unit_type == UNIT_TYPE_PAR1500:
         from pyBrematic.devices.intertechno import PAR1500
 

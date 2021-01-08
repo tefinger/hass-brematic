@@ -7,6 +7,6 @@
     "@tefinger"
   ],
   "requirements": [
-    "pyBrematic==1.0.0"
+    "pyBrematic==1.2.0"
   ]
 }
