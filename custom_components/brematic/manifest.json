@@ -8,5 +8,6 @@
   ],
   "requirements": [
     "pyBrematic==1.2.1"
-  ]
+  ],
+  "version": "0.3.2"
 }
