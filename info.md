@@ -5,6 +5,7 @@ Custom component for Home Assistant to support Brematic devices.
 ## Gateways
 - Brennenstuhl (*)
 - Intertechno
+- ConnAir
 
 ## Devices
 - Brennenstuhl RCS1000N (*)

@@ -20,6 +20,7 @@ from .const import (
     CONF_UNIT_TYPE,
     GATEWAY_TYPE_BRENNENSTUHL,
     GATEWAY_TYPE_INTERTECHNO,
+    GATEWAY_TYPE_CONNAIR,
     GATEWAY_TYPES,
     UNIT_TYPE_RCS1000N,
     UNIT_TYPE_RCR1000N,
@@ -69,7 +70,10 @@ def get_gateway(gateway_type, host):
         from pyBrematic.gateways import IntertechnoGateway
 
         return IntertechnoGateway(host)
+    elif gateway_type == GATEWAY_TYPE_CONNAIR:
+        from pyBrematic.gateways import ConnAirGateway
 
+        return ConnAirGateway(host)
 
 def get_unit(system_code, unit_conf):
     """Prepares the device"""
