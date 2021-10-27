@@ -8,8 +8,18 @@ from homeassistant.components.switch import (
     PLATFORM_SCHEMA,
     SwitchEntity,
 )
-from homeassistant.const import CONF_FRIENDLY_NAME, CONF_HOST, CONF_SWITCHES, STATE_ON
+from homeassistant.components.template.template_entity import TemplateEntity
+from homeassistant.const import (
+    CONF_FRIENDLY_NAME,
+    CONF_HOST,
+    CONF_SWITCHES,
+    CONF_VALUE_TEMPLATE,
+    STATE_ON,
+)
+from homeassistant.core import callback
+from homeassistant.exceptions import TemplateError
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.entity import async_generate_entity_id
 from homeassistant.helpers.restore_state import RestoreEntity
 
 from .const import (
@@ -45,6 +55,7 @@ UNIT_SCHEMA = vol.Schema(
         vol.Required(CONF_UNIT_CODE): cv.string,
         vol.Optional(CONF_UNIT_TYPE, default=DEFAULT_UNIT_TYPE): vol.In(UNIT_TYPES),
         vol.Optional(CONF_FRIENDLY_NAME): cv.string,
+        vol.Optional(CONF_VALUE_TEMPLATE): cv.template,
     }
 )
 
@@ -133,13 +144,17 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     for object_id, device_config in devices.items():
         unit = get_unit(system_code, device_config)
+        friendly_name = device_config.get(CONF_FRIENDLY_NAME, object_id)
+        state_template = device_config.get(CONF_VALUE_TEMPLATE)
+
         switches.append(
             BrematicSwitch(
                 hass,
                 object_id,
                 gateway,
                 unit,
-                device_config.get(CONF_FRIENDLY_NAME, object_id),
+                friendly_name,
+                state_template,
             )
         )
 
@@ -150,26 +165,52 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities(switches)
 
 
-class BrematicSwitch(SwitchEntity, RestoreEntity):
+class BrematicSwitch(TemplateEntity, SwitchEntity, RestoreEntity):
     """Representation a switch that can be toggled using Brematic Gateway"""
 
-    def __init__(self, hass, object_id, gateway, unit, friendly_name):
+    def __init__(self, hass, object_id, gateway, unit, friendly_name, state_template):
         """Initialize the switch."""
-        self._hass = hass
-        self.entity_id = ENTITY_ID_FORMAT.format(object_id)
+        super().__init__()
+        self.entity_id = async_generate_entity_id(
+            ENTITY_ID_FORMAT, object_id, hass=hass
+        )
         self._name = friendly_name
         self._gateway = gateway
         self._unit = unit
+        self._template = state_template
+        self._state = False
+
+    @callback
+    def _update_state(self, result):
+        super()._update_state(result)
+        if isinstance(result, TemplateError):
+            self._state = None
+            return
+
+        if isinstance(result, bool):
+            self._state = result
+            return
+
+        if isinstance(result, str):
+            self._state = result.lower() in ("true", STATE_ON)
+            return
+
+        self._state = False
 
     async def async_added_to_hass(self):
         """Restore Brematic device state (ON/OFF)."""
-        await super().async_added_to_hass()
 
-        old_state = await self.async_get_last_state()
-        if old_state is not None:
-            self._state = old_state.state == STATE_ON
+        if self._template is None:
+            await super().async_added_to_hass()
+            old_state = await self.async_get_last_state()
+            if old_state is not None:
+                self._state = old_state.state == STATE_ON
         else:
-            self._state = False
+            self.add_template_attribute(
+                "_state", self._template, None, self._update_state
+            )
+
+        await super().async_added_to_hass()
 
     @property
     def should_poll(self):
@@ -188,21 +229,23 @@ class BrematicSwitch(SwitchEntity, RestoreEntity):
 
     @property
     def assumed_state(self):
-        """Return true if unable to access real state of entity."""
-        return True
+        """State is assumed, if no template given."""
+        return self._template is None
 
     def turn_on(self, **kwargs):
         """Turn the device on."""
         from pyBrematic.devices import Device
 
         self._gateway.send_request(self._unit, Device.ACTION_ON)
-        self._state = True
-        self.schedule_update_ha_state()
+        if self._template is None:
+            self._state = True
+            self.async_write_ha_state()
 
     def turn_off(self, **kwargs):
         """Turn the device off."""
         from pyBrematic.devices import Device
 
         self._gateway.send_request(self._unit, Device.ACTION_OFF)
-        self._state = False
-        self.schedule_update_ha_state()
+        if self._template is None:
+            self._state = False
+            self.async_write_ha_state()

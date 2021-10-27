@@ -58,6 +58,10 @@ switch:
       floor_lamp:
         unit_code: '11111'
         unit_type: 'RCS1000N'
+      smartphone_charger:
+        unit_code: '010101'
+        friendly_name: 'Smartphone Camera'
+        value_template: '{{ is_state("binary_sensor.huawei_is_charging", "on") }}'
 ```
 **Please note:** only `switch` is supported. If you want to control your power outlet as a `light` please refer to the [light switch](https://www.home-assistant.io/components/light.switch/) component.
 
@@ -71,6 +75,7 @@ switch:
     - **unit_code**<br />&nbsp;&nbsp;*(string) (Required)* Unit code of the device
     - **unit_type**<br />&nbsp;&nbsp;*(string) (Optional)* Type of the unit (`RCS1000N`, `RCR1000N`, `AB440SA`, `CMR300`, `CMR500`, `CMR1000`, `ITR300`, `ITR3500`, `PAR1500`) <br />&nbsp;&nbsp; default: `RCS1000N`
     - **friendly_name**<br />&nbsp;&nbsp;*(string) (Optional)* Friendly name of the device
+    - **value_template**<br />&nbsp;&nbsp;*(string) (Optional)* [Template](https://www.home-assistant.io/docs/configuration/templating/) for assuming switch state
 
 # Authors & contributors
 The original setup of this repository is by [Tobias Efinger](https://github.com/tefinger).
