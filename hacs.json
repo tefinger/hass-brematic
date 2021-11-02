@@ -1,6 +1,6 @@
 {
     "name": "Brematic",
-    "homeassistant": "0.110",
+    "homeassistant": "2021.10.0",
     "render_readme": true,
     "domains": [
         "switch"
