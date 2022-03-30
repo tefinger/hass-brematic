@@ -170,7 +170,7 @@ class BrematicSwitch(TemplateEntity, SwitchEntity, RestoreEntity):
 
     def __init__(self, hass, object_id, gateway, unit, friendly_name, state_template):
         """Initialize the switch."""
-        super().__init__()
+        super().__init__(hass)
         self.entity_id = async_generate_entity_id(
             ENTITY_ID_FORMAT, object_id, hass=hass
         )
