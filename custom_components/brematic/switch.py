@@ -239,7 +239,7 @@ class BrematicSwitch(TemplateEntity, SwitchEntity, RestoreEntity):
         self._gateway.send_request(self._unit, Device.ACTION_ON)
         if self._template is None:
             self._state = True
-            self.async_write_ha_state()
+            self.schedule_update_ha_state()
 
     def turn_off(self, **kwargs):
         """Turn the device off."""
@@ -248,4 +248,4 @@ class BrematicSwitch(TemplateEntity, SwitchEntity, RestoreEntity):
         self._gateway.send_request(self._unit, Device.ACTION_OFF)
         if self._template is None:
             self._state = False
-            self.async_write_ha_state()
+            self.schedule_update_ha_state()
