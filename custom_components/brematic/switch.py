@@ -165,12 +165,13 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities(switches)
 
 
-class BrematicSwitch(TemplateEntity, SwitchEntity, RestoreEntity):
+class BrematicSwitch(SwitchEntity, RestoreEntity):
     """Representation a switch that can be toggled using Brematic Gateway"""
 
     def __init__(self, hass, object_id, gateway, unit, friendly_name, state_template):
         """Initialize the switch."""
-        super().__init__(hass)
+        super().__init__()
+        self.hass = hass
         self.entity_id = async_generate_entity_id(
             ENTITY_ID_FORMAT, object_id, hass=hass
         )
